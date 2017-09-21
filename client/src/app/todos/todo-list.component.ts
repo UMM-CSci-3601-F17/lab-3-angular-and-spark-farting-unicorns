@@ -8,7 +8,7 @@ import {todo} from "./todo";
     providers: []
 })
 
-export class UserListComponent implements OnInit {
+export class TodoListComponent implements OnInit {
     //These are public so that tests can reference them (.spec.ts)
     public todos: todo[];
     public filteredTodos: todo[];
@@ -22,7 +22,7 @@ export class UserListComponent implements OnInit {
 
     }
 
-    public filterTodos(searchOwner: string, searchStatus: boolean, searchCategory: string, searchBody: string): Todo[] {
+    public filterTodos(searchOwner: string, searchStatus: boolean, searchCategory: string, searchBody: string): todo[] {
 
         this.filteredTodos = this.todos;
 
