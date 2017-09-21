@@ -39,7 +39,7 @@ describe("Todo component", () => {
                     body: "Make the 1302 exam super easy",
                     category: "professor"
                 }
-            ].find(todo => todo.id === todoId))
+            ].find(todo => todo.id === TodoId))
         };
 
         TestBed.configureTestingModule({
