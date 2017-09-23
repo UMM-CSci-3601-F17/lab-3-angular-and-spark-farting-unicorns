@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TodoListService} from "./todo-list.service";
 import {todo} from "./todo";
 
+
 @Component({
     selector: 'todo-list-component',
     templateUrl: 'todo-list.component.html',
@@ -22,7 +23,7 @@ export class TodoListComponent implements OnInit {
 
     }
 
-    public filterTodos(searchOwner: string, searchStatus: boolean, searchCategory: string, searchBody: string): todo[] {
+    public filterTodos(searchOwner: string, searchStatus: string, searchCategory: string, searchBody: string, limitTodos: number): todo[] {
 
         this.filteredTodos = this.todos;
 
@@ -38,7 +39,7 @@ export class TodoListComponent implements OnInit {
         //Filter by status
         if (searchStatus != null) {
             this.filteredTodos = this.filteredTodos.filter(todo => {
-                return !searchStatus || todo.status == searchStatus;
+                return !searchStatus || todo.status.toString().toLowerCase().indexOf(searchStatus) !== -1;
             });
         }
 
@@ -47,7 +48,7 @@ export class TodoListComponent implements OnInit {
             searchCategory = searchCategory.toLocaleLowerCase();
 
             this.filteredTodos = this.filteredTodos.filter(todo => {
-                return !searchOwner || todo.category.toLowerCase().indexOf(searchCategory) !== -1;
+                return !searchCategory || todo.category.toLowerCase().indexOf(searchCategory) !== -1;
             })
         }
 
@@ -57,6 +58,12 @@ export class TodoListComponent implements OnInit {
 
             this.filteredTodos = this.filteredTodos.filter(todo => {
                 return !searchBody || todo.body.toLowerCase().indexOf(searchBody) !== -1;
+            })
+        }
+
+        if(limitTodos != null) {
+            this.filteredTodos = this.filteredTodos.filter(todo => {
+
             })
         }
 

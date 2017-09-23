@@ -9,6 +9,8 @@
         <input #input type="text" placeholder="Filter by status" (input)="todoStatus = $event.target.value">
         <input #input type="text" placeholder="Filter by body" (input)="todoBody = $event.target.value">
         <input #input type="text" placeholder="Filter by category" (input)="todoCategory = $event.target.value">
+        <input #input type="number" placeholder="Filter by limit" (input)="todoLimit = $event.target.value">
+
 
 
     </li>
@@ -17,7 +19,13 @@
 
 <ul class="list-group" *ngIf="todos; else todosError">
     <li id="todos" *ngFor="let todo of this.filterTodos(todoOwner, todoStatus, todoCategory, todoBody)" class="list-group-item">
-        {{ todo.owner }} has status {{ todo.status }} with body {{ todo.body }} in category {{ todo.category }}
+        {{ todo.owner }} has a todo with the body
+        <br>
+        "{{ todo.body }}"
+        <br>
+        in category {{ todo.category }}
+        <br>
+        with status {{ todo.status }}
     </li>
 </ul>
 <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
